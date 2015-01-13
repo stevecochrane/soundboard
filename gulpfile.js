@@ -24,7 +24,15 @@ gulp.task("audio", function() {
         .pipe(gulp.dest("./dist/audio"));
 });
 
-gulp.task("imagemin", function() {
+gulp.task("manifest", function() {
+    gulp.src("./src/manifest/*")
+        .pipe(gulp.dest("./dist/manifest"));
+});
+
+gulp.task("images", function() {
+    gulp.src("./src/*.png")
+        .pipe(gulp.dest("./dist"));
+
     gulp.src("./src/img/*")
         .pipe(imagemin())
         .pipe(gulp.dest("./dist/img"));
@@ -66,4 +74,4 @@ gulp.task("watch", function() {
     });
 });
 
-gulp.task("default", ["imagemin", "js", "css", "html"]);
+gulp.task("default", ["images", "js", "css", "html"]);
