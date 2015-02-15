@@ -1,12 +1,8 @@
-window.onload = init;
-var context;
-var bufferLoader;
-
 function BufferLoader(context, urlList, callback) {
     this.context = context;
     this.urlList = urlList;
     this.onload = callback;
-    this.bufferList = [];
+    this.bufferList = new Array();
     this.loadCount = 0;
 }
 
@@ -51,36 +47,56 @@ BufferLoader.prototype.load = function() {
     }
 };
 
-function init() {
-    // Fix up prefixing
-    window.AudioContext = window.AudioContext || window.webkitAudioContext;
-    context = new AudioContext();
 
-    var theButton = document.getElementById("button-price-is-right");
-    theButton.onclick = function() {
+var SoundboardSample = {
+};
 
-        bufferLoader = new BufferLoader(
-            context,
-            [
-                "audio/price-is-right.mp3"
-            ],
-            finishedLoading
-        );
-    
-        bufferLoader.load();
-    };
+SoundboardSample.play = function() {
+    var source = context.createBufferSource();
+    source.buffer = BUFFERS.priceIsRight;
+    source.connect(context.destination);
+    source.start(0);
+};
+
+
+// Keep track of all loaded buffers.
+var BUFFERS = {};
+// Page-wide audio context.
+var context = null;
+
+// An object to track the buffers to load {name: path}
+var BUFFERS_TO_LOAD = {
+    priceIsRight: "audio/price-is-right.mp3"
+};
+
+// Loads all sound samples into the buffers object.
+function loadBuffers() {
+    // Array-ify
+    var names = [];
+    var paths = [];
+    for (var name in BUFFERS_TO_LOAD) {
+        var path = BUFFERS_TO_LOAD[name];
+        names.push(name);
+        paths.push(path);
+    }
+    bufferLoader = new BufferLoader(context, paths, function(bufferList) {
+        for (var i = 0; i < bufferList.length; i++) {
+            var buffer = bufferList[i];
+            var name = names[i];
+            BUFFERS[name] = buffer;
+        }
+    });
+    bufferLoader.load();
 }
 
-function finishedLoading(bufferList) {
-    // Create two sources and play them both together.
-    var source1 = context.createBufferSource();
-//    var source2 = context.createBufferSource();
-    source1.buffer = bufferList[0];
-//    source2.buffer = bufferList[1];
-
-    source1.connect(context.destination);
-//    source2.connect(context.destination);
-    source1.start(0);
-//    source2.start(0);
-
-}
+document.addEventListener('DOMContentLoaded', function() {
+    try {
+        // Fix up prefixing
+        window.AudioContext = window.AudioContext || window.webkitAudioContext;
+        context = new AudioContext();
+    }
+    catch(e) {
+        alert("Web Audio API is not supported in this browser");
+    }
+    loadBuffers();
+});
