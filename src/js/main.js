@@ -66,6 +66,8 @@ var context = null;
 
 // An object to track the buffers to load {name: path}
 var BUFFERS_TO_LOAD = {
+    hearthstone: "audio/hearthstone.mp3",
+    jobsDone: "audio/jobs-done.mp3",
     priceIsRight: "audio/price-is-right.mp3"
 };
 
