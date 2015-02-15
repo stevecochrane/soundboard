@@ -48,10 +48,30 @@ BufferLoader.prototype.load = function() {
 };
 
 
-var SoundboardSample = {
+var HearthstoneSample = {
 };
 
-SoundboardSample.play = function() {
+HearthstoneSample.play = function() {
+    var source = context.createBufferSource();
+    source.buffer = BUFFERS.hearthstone;
+    source.connect(context.destination);
+    source.start(0);
+};
+
+var JobsDoneSample = {
+};
+
+JobsDoneSample.play = function() {
+    var source = context.createBufferSource();
+    source.buffer = BUFFERS.jobsDone;
+    source.connect(context.destination);
+    source.start(0);
+};
+
+var PriceIsRightSample = {
+};
+
+PriceIsRightSample.play = function() {
     var source = context.createBufferSource();
     source.buffer = BUFFERS.priceIsRight;
     source.connect(context.destination);
