@@ -44,6 +44,7 @@ gulp.task("css", function() {
 });
 
 gulp.task("js", function() {
+/*
     gulp.src("./src/js/main.js")
         .pipe(jshint())
         .pipe(jshint.reporter("default"))
@@ -54,6 +55,10 @@ gulp.task("js", function() {
         .pipe(vinylSourceStream("main.js"))
         .pipe(vinylBuffer())
         .pipe(uglify())
+        .pipe(gulp.dest("./dist/js"));
+*/
+
+    gulp.src("./src/js/main.js")
         .pipe(gulp.dest("./dist/js"));
 });
 
@@ -69,4 +74,4 @@ gulp.task("watch", function() {
     });
 });
 
-gulp.task("default", ["images", "js", "css", "html"]);
+gulp.task("default", ["audio", "images", "js", "css", "html"]);
