@@ -24,11 +24,6 @@ gulp.task("audio", function() {
         .pipe(gulp.dest("./dist/audio"));
 });
 
-gulp.task("manifest", function() {
-    gulp.src("./src/manifest/*")
-        .pipe(gulp.dest("./dist/manifest"));
-});
-
 gulp.task("images", function() {
     gulp.src("./src/*.png")
         .pipe(gulp.dest("./dist"));
