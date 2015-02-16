@@ -101,7 +101,7 @@ var context = null;
 
 // An object to track the buffers to load {name: path}
 var BUFFERS_TO_LOAD = {
-    circus: "audio/circus.mp3",
+    circus: "audio/circus-theme.mp3",
     hearthstone: "audio/hearthstone.mp3",
     jobsDone: "audio/jobs-done.mp3",
     priceIsRight: "audio/price-is-right.mp3"
