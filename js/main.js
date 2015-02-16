@@ -53,6 +53,16 @@ BufferLoader.prototype.load = function() {
 };
 
 
+var CircusSample = {
+};
+
+CircusSample.play = function() {
+    var source = context.createBufferSource();
+    source.buffer = BUFFERS.circus;
+    source.connect(context.destination);
+    source.start(0);
+};
+
 var HearthstoneSample = {
 };
 
@@ -91,6 +101,7 @@ var context = null;
 
 // An object to track the buffers to load {name: path}
 var BUFFERS_TO_LOAD = {
+    circus: "audio/circus.mp3",
     hearthstone: "audio/hearthstone.mp3",
     jobsDone: "audio/jobs-done.mp3",
     priceIsRight: "audio/price-is-right.mp3"
