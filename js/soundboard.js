@@ -25,7 +25,7 @@ BufferLoader.prototype.loadBuffer = function(url, index) {
             request.response,
             function(buffer) {
                 if (!buffer) {
-                    alert('error decoding file data: ' + url);
+                    alert("error decoding file data: " + url);
                     return;
                 }
                 loader.bufferList[index] = buffer;
@@ -34,13 +34,13 @@ BufferLoader.prototype.loadBuffer = function(url, index) {
                 }
             },
             function(error) {
-                console.error('decodeAudioData error', error);
+                console.error("decodeAudioData error", error);
             }
         );
     };
 
     request.onerror = function() {
-        alert('BufferLoader: XHR error');
+        alert("BufferLoader: XHR error");
     };
 
     request.send();
@@ -101,14 +101,15 @@ var context = null;
 
 // Loads all sound samples into the buffers object.
 function loadBuffers() {
-    // Array-ify
     var names = [];
     var paths = [];
+
     sounds.forEach(function(sound) {
         var path = "audio/" + sound.file;
         names.push(sound.id);
         paths.push(path);
     });
+
     bufferLoader = new BufferLoader(context, paths, function(bufferList) {
         for (var i = 0; i < bufferList.length; i++) {
             var buffer = bufferList[i];
@@ -116,10 +117,11 @@ function loadBuffers() {
             BUFFERS[name] = buffer;
         }
     });
+
     bufferLoader.load();
 }
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener("DOMContentLoaded", function() {
     try {
         // Fix up prefixing
         window.AudioContext = window.AudioContext || window.webkitAudioContext;
