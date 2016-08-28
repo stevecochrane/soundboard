@@ -63,7 +63,7 @@ function loadBuffers() {
     var paths = [];
 
     sounds.forEach(function(sound) {
-        var path = "audio/" + sound.file;
+        var path = sound.file;
         names.push(sound.id);
         paths.push(path);
     });
