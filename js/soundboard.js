@@ -57,12 +57,10 @@ var context = null;
 
 // Loads all sound samples into the buffers object.
 function loadBuffers() {
-    var names = [];
     var paths = [];
 
     sounds.forEach(function(sound) {
         var path = sound.file;
-        names.push(sound.id);
         paths.push(path);
     });
 
