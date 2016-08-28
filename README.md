@@ -3,6 +3,11 @@
 A silly toy webpage where you can click/tap to play sound effects and troll your friends/coworkers. This
 can be saved to your iPhone home screen and function like an application.
 
+It wasn't intentional but this ended up looking just like how I remember the original iteration of Muxtape (RIP).
+Here's a preview:
+
+![Soundboard web view](/images/preview.png?raw=true)
+
 A lot of the JavaScript is originally from
 [Getting Started with Web Audio API](http://www.html5rocks.com/en/tutorials/webaudio/intro/) by Boris Smus.
 
