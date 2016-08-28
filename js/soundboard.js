@@ -111,11 +111,10 @@ function loadBuffers() {
     });
 
     bufferLoader = new BufferLoader(context, paths, function(bufferList) {
-        for (var i = 0; i < bufferList.length; i++) {
-            var buffer = bufferList[i];
-            var name = names[i];
+        bufferList.forEach(function(buffer, index) {
+            var name = names[index];
             BUFFERS[name] = buffer;
-        }
+        });
     });
 
     bufferLoader.load();
