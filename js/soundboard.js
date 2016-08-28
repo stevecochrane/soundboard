@@ -1,5 +1,5 @@
 /*
-    I lifted all of this from here and then changed it slightly:
+    A large portion of the following comes from this tutorial:
     http://www.html5rocks.com/en/tutorials/webaudio/intro/
 */
 
