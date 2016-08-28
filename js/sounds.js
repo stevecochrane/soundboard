@@ -1,7 +1,7 @@
 var sounds = [
     {
         file: "price-is-right.mp3",
-        id: "price-is-right",
+        id: "priceIsRight",
         label: "Price is Right Fail"
     },
     {
@@ -11,12 +11,12 @@ var sounds = [
     },
     {
         file: "jobs-done.mp3",
-        id: "jobs-done",
+        id: "jobsDone",
         label: "Job&rsquo;s Done"
     },
     {
         file: "circus-theme.mp3",
-        id: "circus-theme",
+        id: "circus",
         label: "Circus Theme"
     }
 ];

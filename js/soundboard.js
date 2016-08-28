@@ -99,24 +99,16 @@ var BUFFERS = {};
 // Page-wide audio context.
 var context = null;
 
-// An object to track the buffers to load {name: path}
-var BUFFERS_TO_LOAD = {
-    circus: "audio/circus-theme.mp3",
-    hearthstone: "audio/hearthstone.mp3",
-    jobsDone: "audio/jobs-done.mp3",
-    priceIsRight: "audio/price-is-right.mp3"
-};
-
 // Loads all sound samples into the buffers object.
 function loadBuffers() {
     // Array-ify
     var names = [];
     var paths = [];
-    for (var name in BUFFERS_TO_LOAD) {
-        var path = BUFFERS_TO_LOAD[name];
-        names.push(name);
+    sounds.forEach(function(sound) {
+        var path = "audio/" + sound.file;
+        names.push(sound.id);
         paths.push(path);
-    }
+    });
     bufferLoader = new BufferLoader(context, paths, function(bufferList) {
         for (var i = 0; i < bufferList.length; i++) {
             var buffer = bufferList[i];
