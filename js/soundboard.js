@@ -52,48 +52,6 @@ BufferLoader.prototype.load = function() {
     }
 };
 
-
-var CircusSample = {
-};
-
-CircusSample.play = function() {
-    var source = context.createBufferSource();
-    source.buffer = BUFFERS.circus;
-    source.connect(context.destination);
-    source.start(0);
-};
-
-var HearthstoneSample = {
-};
-
-HearthstoneSample.play = function() {
-    var source = context.createBufferSource();
-    source.buffer = BUFFERS.hearthstone;
-    source.connect(context.destination);
-    source.start(0);
-};
-
-var JobsDoneSample = {
-};
-
-JobsDoneSample.play = function() {
-    var source = context.createBufferSource();
-    source.buffer = BUFFERS.jobsDone;
-    source.connect(context.destination);
-    source.start(0);
-};
-
-var PriceIsRightSample = {
-};
-
-PriceIsRightSample.play = function() {
-    var source = context.createBufferSource();
-    source.buffer = BUFFERS.priceIsRight;
-    source.connect(context.destination);
-    source.start(0);
-};
-
-
 // Keep track of all loaded buffers.
 var BUFFERS = {};
 // Page-wide audio context.
@@ -112,12 +70,27 @@ function loadBuffers() {
 
     bufferLoader = new BufferLoader(context, paths, function(bufferList) {
         bufferList.forEach(function(buffer, index) {
-            var name = names[index];
-            BUFFERS[name] = buffer;
+            sounds[index].buffer = buffer;
         });
     });
 
     bufferLoader.load();
+
+    sounds.forEach(function(sound) {
+        var soundButton = document.createElement("button");
+        var soundButtonText = document.createTextNode(sound.label);
+        var container = document.getElementById("sounds");
+
+        soundButton.onclick = function() {
+            var source = context.createBufferSource();
+            source.buffer = sound.buffer;
+            source.connect(context.destination);
+            source.start(0);
+        };
+
+        soundButton.appendChild(soundButtonText);
+        container.appendChild(soundButton);
+    });
 }
 
 document.addEventListener("DOMContentLoaded", function() {
