@@ -7,12 +7,12 @@ var sounds = [
     {
         file: "hearthstone.mp3",
         id: "hearthstone",
-        label: "&ldquo;Hearthstone&rdquo;"
+        label: "Hearthstone"
     },
     {
         file: "jobs-done.mp3",
         id: "jobsDone",
-        label: "Job&rsquo;s Done"
+        label: "Job's Done"
     },
     {
         file: "circus-theme.mp3",
